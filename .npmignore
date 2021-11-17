@@ -1,0 +1,7 @@
+.git
+.github
+.eslintrc
+tsconfig.json
+
+src
+node_modules

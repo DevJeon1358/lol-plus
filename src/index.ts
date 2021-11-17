@@ -1,0 +1,1 @@
+export { LoLPlusClient } from './client';
