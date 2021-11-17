@@ -2,6 +2,6 @@ import { LOLPlatform, LOLRegion } from '../constant';
 
 export interface LoLPlusClientOptions {
   apiKey: string;
-  gamePlatform: LOLPlatform;
-  gameRegion: LOLRegion;
+  gamePlatform: keyof typeof LOLPlatform;
+  gameRegion: keyof typeof LOLRegion;
 }
