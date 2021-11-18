@@ -4,6 +4,12 @@
   "description": "A LoL API Wrapper",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "keywords": [
+    "lol",
+    "leagueoflegends",
+    "riot",
+    "riotapi"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:lint": "eslint src/**/*",
