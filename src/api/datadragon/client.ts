@@ -6,13 +6,6 @@ import { DatadragonChampionListResponse } from './types';
 import { LOLChampionShortInfo } from '../../structure';
 
 export class LOLDatadragonClient extends LOLApiBaseClient {
-  private cache: NodeCache;
-
-  constructor(client: LoLPlusClient) {
-    super(client);
-    this.cache = new NodeCache();
-  }
-
   private async callDataDragon<T>(path: string): Promise<T> {
     const endpoint = await this.client.requestOptions.getDataDragonEndpoint();
     const url = `${endpoint}${path}`;
@@ -30,7 +23,7 @@ export class LOLDatadragonClient extends LOLApiBaseClient {
     const response = await this.callDataDragon<DatadragonChampionListResponse>('/champion.json');
     const championList = Object.values(response.data)
       .map((e) => new LOLChampionShortInfo(e));
-    this.cache.set(cacheKey, championList, 30 * 60);
+    this.client.cache.set(cacheKey, championList, 30 * 60);
 
     return championList;
   }

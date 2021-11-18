@@ -1,8 +1,10 @@
+import NodeCache from 'node-cache';
 import { LOLChampionClient, LOLDatadragonClient, LOLSummonerClient } from './api';
 import { LOLPlatform, LOLRegion } from './constant';
 import { LoLPlusClientOptions, LOLRequestOptions } from './structure';
 
 export class LoLPlusClient {
+  readonly cache: NodeCache;
   readonly requestOptions: LOLRequestOptions;
   readonly champion: LOLChampionClient;
   readonly datadragon: LOLDatadragonClient;
@@ -12,6 +14,8 @@ export class LoLPlusClient {
     const { apiKey, gamePlatform, gameRegion } = options;
     const platform = LOLPlatform[gamePlatform];
     const region = LOLRegion[gameRegion];
+
+    this.cache = new NodeCache();
 
     this.requestOptions = new LOLRequestOptions(apiKey, platform, region);
     this.champion = new LOLChampionClient(this);
