@@ -1,7 +1,5 @@
 import fetch from 'node-fetch';
-import NodeCache from 'node-cache';
 import { LOLApiBaseClient } from '../LOLApiBaseClient';
-import type { LoLPlusClient } from '../../client';
 import { DatadragonChampionListResponse } from './types';
 import { LOLChampionShortInfo } from '../../structure';
 
