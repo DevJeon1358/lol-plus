@@ -26,5 +26,6 @@ jobs:
           VERSION: ${{github.event.release.tag_name}}
         run: |
           git config --global user.name 'lol-plus-bot'
+          git config --global user.email 'devjeon1358@users.noreply.github.com'
           git commit -a -m "release: $VERSION"
           git push
