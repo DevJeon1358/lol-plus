@@ -30,7 +30,11 @@ const app = async () => {
   console.log(rotationChampionList.freeChampionList.map((e) => e.name));
 
   // Get Summoner Information By Summoner Name
-  await client.summoner.getSummonerByName('summonerName');
+  const summoner = await client.summoner.getSummonerByName('summonerName');
+  
+  // Get Summoner Match ID List
+  const matchIdList = await summoner.getMatchIdList()
+  console.log(matchIdList);
 }
 
 app();
