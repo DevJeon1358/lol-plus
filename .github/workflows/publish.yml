@@ -27,3 +27,4 @@ jobs:
         run: |
           git config --global user.name 'lol-plus-bot'
           git commit -a -m "release: $VERSION"
+          git push
