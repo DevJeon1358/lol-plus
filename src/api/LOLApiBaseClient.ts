@@ -12,8 +12,8 @@ export class LOLApiBaseClient {
     this.requestOptions = this.client.requestOptions;
   }
 
-  async callApi<T>(path: string): Promise<T> {
-    const apiEndPoint = this.requestOptions.getApiEndpoint();
+  async callApi<T>(path: string, useRoutingValue = false): Promise<T> {
+    const apiEndPoint = this.requestOptions.getApiEndpoint(useRoutingValue);
     const url = `${apiEndPoint}${path}`;
 
     const response = await fetch(url, {

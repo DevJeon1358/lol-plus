@@ -27,11 +27,13 @@
   "homepage": "https://github.com/DevJeon1358/lol-plus#readme",
   "dependencies": {
     "node-cache": "^5.1.2",
-    "node-fetch": "^2.6.6"
+    "node-fetch": "^2.6.6",
+    "qs": "^6.10.1"
   },
   "devDependencies": {
     "@types/node": "^16.11.7",
     "@types/node-fetch": "^2.5.12",
+    "@types/qs": "^6.9.7",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
     "eslint": "^8.2.0",

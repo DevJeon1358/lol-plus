@@ -1,3 +1,9 @@
+export enum LOLRoutingValue {
+  AMERICAS = 'AMERICAS',
+  ASIA = 'ASIA',
+  EUROPE = 'EUROPE',
+}
+
 export enum LOLPlatform {
   BR1 = 'BR1',
   EUW1 = 'EUW1',
@@ -24,3 +30,17 @@ export enum LOLRegion {
   JP = 'JP',
   KR = 'KR',
 }
+
+export const LOLRoutingValueMapping: { [key in LOLRegion]: keyof typeof LOLRoutingValue} = {
+  NA: 'AMERICAS',
+  BR: 'AMERICAS',
+  LAN: 'AMERICAS',
+  LAS: 'AMERICAS',
+  OCE: 'AMERICAS',
+  KR: 'ASIA',
+  JP: 'ASIA',
+  EUNE: 'EUROPE',
+  EUW: 'EUROPE',
+  TR: 'EUROPE',
+  RU: 'EUROPE',
+};

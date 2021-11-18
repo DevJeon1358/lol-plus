@@ -1,6 +1,11 @@
 import fetch from 'node-fetch';
 import {
-  DATADRAGON_ENDPOINT, LOLPlatform, LOLRegion, LOL_API_ENDPOINT,
+  DATADRAGON_ENDPOINT,
+  LOLPlatform,
+  LOLRegion,
+  LOLRoutingValue,
+  LOLRoutingValueMapping,
+  LOL_API_ENDPOINT,
 } from '../constant';
 
 interface RealmData {
@@ -12,6 +17,7 @@ interface RealmData {
 export class LOLRequestOptions {
   readonly apiKey: string;
   readonly gamePlatform: LOLPlatform;
+  readonly routingValue: LOLRoutingValue;
   readonly gameRegion: LOLRegion;
 
   private apiEndpoint: string | null;
@@ -21,12 +27,17 @@ export class LOLRequestOptions {
     this.apiKey = apiKey;
     this.gamePlatform = gamePlatform;
     this.gameRegion = gameRegion;
+    this.routingValue = LOLRoutingValue[LOLRoutingValueMapping[gameRegion]];
 
     this.apiEndpoint = null;
     this.dataDragonEndpoint = null;
   }
 
-  getApiEndpoint() {
+  getApiEndpoint(useRoutingValue = false) {
+    if (useRoutingValue) {
+      return LOL_API_ENDPOINT.replace('{platform}', this.routingValue);
+    }
+
     if (!this.apiEndpoint) {
       this.apiEndpoint = LOL_API_ENDPOINT.replace('{platform}', this.gamePlatform);
     }

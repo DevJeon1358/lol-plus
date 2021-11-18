@@ -1,5 +1,7 @@
 import NodeCache from 'node-cache';
-import { LOLChampionClient, LOLDatadragonClient, LOLSummonerClient } from './api';
+import {
+  LOLChampionClient, LOLDatadragonClient, LOLMatchClient, LOLSummonerClient,
+} from './api';
 import { LOLPlatform, LOLRegion } from './constant';
 import { LoLPlusClientOptions, LOLRequestOptions } from './structure';
 
@@ -9,6 +11,7 @@ export class LoLPlusClient {
   readonly champion: LOLChampionClient;
   readonly datadragon: LOLDatadragonClient;
   readonly summoner: LOLSummonerClient;
+  readonly match: LOLMatchClient;
 
   constructor(options: LoLPlusClientOptions) {
     const { apiKey, gamePlatform, gameRegion } = options;
@@ -21,5 +24,6 @@ export class LoLPlusClient {
     this.champion = new LOLChampionClient(this);
     this.datadragon = new LOLDatadragonClient(this);
     this.summoner = new LOLSummonerClient(this);
+    this.match = new LOLMatchClient(this);
   }
 }
