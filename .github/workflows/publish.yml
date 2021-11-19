@@ -11,8 +11,6 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-      - name: Tag Version
-        run: npm version ${{github.event.release.tag_name}} --no-git-tag-version
       - name: Install Package
         run: npm ci
       - name: Build Package
@@ -21,11 +19,3 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Commit Version
-        env:
-          VERSION: ${{github.event.release.tag_name}}
-        run: |
-          git config --global user.name 'lol-plus-bot'
-          git config --global user.email 'devjeon1358@users.noreply.github.com'
-          git commit -a -m "release: $VERSION"
-          git push
